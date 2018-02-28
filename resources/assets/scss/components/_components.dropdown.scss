@@ -1,0 +1,45 @@
+/*
+|--------------------------------------------------------------------------
+| #DROPDOWN
+|--------------------------------------------------------------------------
+*/
+
+
+
+.dropdown {
+    position: absolute;
+    bottom: -110px;
+    left: -2rem;
+    background: color(white);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    padding: 1rem;
+    min-width: 150px;
+    overflow: hidden;
+
+    ul {
+        padding: 0;
+        list-style-type: none;
+    }
+
+    @if ($has-radius) {
+        border-radius: radius(small);
+    }
+
+    @if ($has-shadow) {
+        @include shadow(light);
+    }
+
+    &__container {
+        position: relative;
+
+        &.is--active {
+            .dropdown {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: all;
+            }
+        }
+    }
+}

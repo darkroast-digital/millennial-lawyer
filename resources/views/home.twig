@@ -1,0 +1,199 @@
+{% extends 'layouts/app.twig' %}
+
+{% block content %}
+    
+    <header class="header" id="home">
+        <div class="header__container container">
+            <div class="logo-wrapper">
+                <a href="{{ path_for('home') }}">
+                    <img src="/assets/img/ml-header.jpg" alt="ML" draggable="false">
+                    <img src="/assets/img/millennial-lawyer-header.png" alt="Millennial Lawyer" draggable="false">
+                </a>
+            </div>
+
+            {% include 'partials/nav.twig' %}
+
+            <div class="socials-wrapper">
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-vimeo"></i></a>
+                <a href="#"><i class="fa fa-facebook-square"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero__container container">
+            <img src="/assets/img/millennial-lawyer-hero.png" alt="Millennial Lawyer - ML - By Jordan Jones" draggable="false">
+        </div>
+        <img src="/assets/img/jordan-hero.png" alt="Jordan Jones" class="jordan" draggable="false">
+    </section>
+
+    <section class="banner">
+        <div class="banner__container container">
+            <div class="column-4">
+                <img src="/assets/img/lifestyle-trends.png" draggable="false">
+                <h3><span>Lifestyle</span> Trends</h3>
+            </div>
+            <div class="column-4">
+                <img src="/assets/img/personal-dev.png" draggable="false">
+                <h3><span>Personal</span> Development</h3>
+            </div>
+            <div class="column-4">
+                <img src="/assets/img/professional-dev.png" draggable="false">
+                <h3><span>Professional</span> Development</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about__container container">
+        
+            <div class="reverse-rows container--full">
+                <div class="column-6 popular">
+                    <div class="popular__container container--full">
+                        <h2>Popular <br/>
+                            <span>From Blog</span></h2>
+
+                        <div class="article container--full">
+                            <div class="featured-wrapper column-3">
+                                <img src="" alt="" draggable="false">
+                            </div>
+                            <div class="content-wrapper column-9">
+                                <h4>Post Title</h4>
+                                <p>Et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</p>
+                                <p class="byline">By Admin on Oct 12, 2015</p>
+                            </div>
+                        </div>
+
+                        <div class="article container--full">
+                            <div class="featured-wrapper column-3">
+                                <img src="" alt="" draggable="false">
+                            </div>
+                            <div class="content-wrapper column-9">
+                                <h4>Post Title</h4>
+                                <p>Et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</p>
+                                <p class="byline">By Admin on Oct 12, 2015</p>
+                            </div>
+                        </div>
+
+                        <div class="article container--full">
+                            <div class="featured-wrapper column-3">
+                                <img src="" alt="" draggable="false">
+                            </div>
+                            <div class="content-wrapper column-9">
+                                <h4>Post Title</h4>
+                                <p>Et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</p>
+                                <p class="byline">By Admin on Oct 12, 2015</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column-6 jordan">
+                    <div class="jordan__container container--full">
+                        <h2>About <br/>
+                            <span>Jordan Jones</span></h2>
+
+                        <div class="content-wrapper">
+                            <h4>Millennial at Law</h4>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing diam nonumy eir tempor invidunt aliquyam erat et accusam et.</p>
+                            <a href="#" class="button"><i class="fa fa-angle-right"></i> Learn more</a>
+                            <img src="/assets/img/jordan-about.png" alt="Jordan Jones" draggable="false">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog column-12" id="blog">
+                <div class="blog__container container--full">
+                    <h2>Latest <span>From Blog</span></h2>
+
+                    <div class="article container--full">
+                        <div class="featured-wrapper column-3">
+                            <img src="" alt="" draggable="false">
+                        </div>
+                        <div class="content-wrapper column-9">
+                            <h4>Post Title</h4>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat diam voluptua vero eos et accusam et justo duo dolores. Aliquam erat volutpat. Nam sed eros velit. Fusce placerat sodales fringilla.</p>
+                            <p class="byline">By Admin on Oct 12, 2015</p>
+                            <p class="links"><a href="#" class="comments">2 <i class="fa fa-comment"></i></a> <a href="#" class="likes">5 <i class="fa fa-heart"></i></a> | <a href="#" class="share"><i class="fa fa-share-alt"></i></a></p>
+                        </div>
+                    </div>
+
+                    <div class="article container--full">
+                        <div class="featured-wrapper column-3">
+                            <img src="" alt="" draggable="false">
+                        </div>
+                        <div class="content-wrapper column-9">
+                            <h4>Post Title</h4>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat diam voluptua vero eos et accusam et justo duo dolores. Aliquam erat volutpat. Nam sed eros velit. Fusce placerat sodales fringilla.</p>
+                            <p class="byline">By Admin on Oct 12, 2015</p>
+                            <p class="links"><a href="#" class="comments">2 <i class="fa fa-comment"></i></a> <a href="#" class="likes">5 <i class="fa fa-heart"></i></a> | <a href="#" class="share"><i class="fa fa-share-alt"></i></a></p>
+                        </div>
+                    </div>
+
+                    <div class="article container--full">
+                        <div class="featured-wrapper column-3">
+                            <img src="" alt="" draggable="false">
+                        </div>
+                        <div class="content-wrapper column-9">
+                            <h4>Post Title</h4>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat diam voluptua vero eos et accusam et justo duo dolores. Aliquam erat volutpat. Nam sed eros velit. Fusce placerat sodales fringilla.</p>
+                            <p class="byline">By Admin on Oct 12, 2015</p>
+                            <p class="links"><a href="#" class="comments">2 <i class="fa fa-comment"></i></a> <a href="#" class="likes">5 <i class="fa fa-heart"></i></a> | <a href="#" class="share"><i class="fa fa-share-alt"></i></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact__container container">
+
+            <div class="panel column-5">
+                <img src="/assets/img/jordan-jones.png" alt="Jordan Jones" draggable="false">
+                <a href="mailto:jordan@millenniallawyer.com" class="email">jordan@millenniallawyer.com</a>
+                <div class="socials-wrapper">
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-vimeo"></i></a>
+                    <a href="#"><i class="fa fa-facebook-square"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="column-7 content-wrapper">
+                <h2>Contact</h2>
+                <form action="{{ path_for('home') }}" method="post" class="form contact-form">
+                    <div class="field">
+                        <label for="name"><i class="fa fa-user"></i></label>
+                        <input type="text" name="name" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="email"><i class="fa fa-envelope"></i></label>
+                        <input type="email" name="email" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="message"><i class="fa fa-pencil"></i></label>
+                        <textarea name="message" required></textarea>
+                    </div>
+
+                    <button class="button submit"><i class="fa fa-angle-right"></i> Send Message</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer__container container">
+            <p>&copy; COPYRIGHT 2018</p>
+        </div>
+    </footer>
+    
+{% endblock %}
