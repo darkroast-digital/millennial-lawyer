@@ -22,7 +22,7 @@
 
     <title>{% block title %}Home{% endblock %} | Jordan Jones, Millennial Lawyer</title>
     <meta name="description" content="{% block description %}{% endblock %}">
-    <meta name="keywords" content="lawyer, millennial, millennial lawyer, jordan jones, millennial at law">
+    <meta name="keywords" content="lawyer, millennial, millennial lawyer, jordan jones, millennial at law, {% block keywords %}{% endblock %}">
 
     <!-- Favicons -->
 
@@ -30,8 +30,8 @@
     
     <!-- Open Graph -->
 
-    <meta property="og:title" content="Jordan Jones, Millennial Lawyer">
-    <meta property="og:description" content="">
+    <meta property="og:title" content="{% block ogtitle %}Jordan Jones, Millennial Lawyer{% endblock %}">
+    <meta property="og:description" content="{% block ogdesc %}{% endblock %}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="millenniallawyer.darkroast.co">
     <meta property="og:site_name" content="Jordan Jones, Millennial Lawyer">
@@ -46,6 +46,8 @@
 </head>
 <body>
     {% include 'partials/off-canvas.twig' %}
+    {% include 'partials/admin-off-canvas.twig' %}
+    {% include 'partials/flash.twig' %}
     <div class="{% block pageclass %}home{% endblock %}" id="app">
             <div class="content">
                 {% include 'partials/overlay.twig' %}

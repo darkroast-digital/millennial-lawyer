@@ -1,0 +1,26 @@
+{% extends 'layouts/app.twig' %}
+{% block pageclass %}admin{% endblock %}
+{% block title %}Delete Post{% endblock %}
+
+{% block content %}
+
+{% include 'admin/header.twig' %}
+
+<section class="posts-delete">
+    <div class="posts-delete__container container">
+        <div class="column-12 title-bar">
+            <h1>Delete Post</h1>
+            <a href="{{ path_for('posts.index') }}" class="button"><i class="fa fa-angle-right"></i> All Posts</a>
+        </div>
+
+        <form action="{{ path_for('posts.delete', { 'id': post.id }) }}" method="post" class="delete-post-form" enctype="multipart/form-data">
+            <div class="container--full">
+                <h4>Are you sure you want to delete "{{ post.title }}"?</h4>
+                <h5>This action cannot be undone.</h5>
+                <button class="button submit delete">Delete Post</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

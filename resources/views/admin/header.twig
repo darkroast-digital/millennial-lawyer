@@ -1,0 +1,29 @@
+<div class="admin-header">
+    <div class="admin-header__container">
+        <div class="logo-wrapper">
+            <a href="{{ path_for('posts.index') }}">
+                <img src="/assets/img/ml-header.jpg" alt="ML" draggable="false">
+                <img src="/assets/img/millennial-lawyer-header.png" alt="Millennial Lawyer" draggable="false">
+            </a>
+        </div>
+
+        <div class="user-wrapper">
+            <ul>
+                <li class="dropdown"><a href="{{ path_for('users.view', { 'id': auth.user.id }) }}">
+                    <p>Welcome back, {{ auth.user.name }}!</p>
+                    <div class="avatar-wrapper">
+                        <img src="/assets/uploads/avatars/{{ auth.user.id }}/avatar.jpg" draggable="false">
+                    </div>
+                </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path_for('users.view', { 'id': auth.user.id }) }}">View Account</a></li>
+                        <li><a href="{{ path_for('users.edit', { 'id': auth.user.id }) }}">Edit Account</a></li>
+                        <li><a href="{{ path_for('logout') }}">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        {% include 'partials/admin-hamburger.twig' %}
+    </div>
+</div>

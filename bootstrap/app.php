@@ -1,11 +1,9 @@
 <?php
-
+require_once __DIR__ . '/../vendor/autoload.php';
 session_start();
 
+use Illuminate\Pagination\Paginator;
 use Respect\Validation\Validator as v;
-
-require_once __DIR__ . '/../vendor/autoload.php';
-
 use Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware;
 
 
@@ -52,6 +50,19 @@ $app = new Slim\App([
 
 
 
+// #PAGINATOR
+// =========================================================================
+
+Paginator::currentPathResolver(function(){
+    return isset($_SERVER['REQUEST_URI']) ? strtok($_SERVER['REQUEST_URI'], '?') : '/';
+});
+
+Paginator::currentPageResolver(function($pageName = 'page') {
+    return isset($_GET['page']) ? $_GET['page'] : 1;
+});
+
+
+
 // #ERROR REPORTING
 // =========================================================================
 
@@ -71,6 +82,13 @@ require_once __DIR__ . '/container.php';
 // =========================================================================
 
 require_once __DIR__ . '/database.php';
+
+
+
+// #VALIDATION
+// =========================================================================
+
+v::with('App\\Validation\\Rules\\');
 
 
 

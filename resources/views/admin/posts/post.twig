@@ -1,0 +1,44 @@
+{% extends 'layouts/app.twig' %}
+{% block pageclass %}admin{% endblock %}
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+
+{% include 'admin/header.twig' %}
+
+<section class="posts-view">
+    <div class="posts-view__container container">
+        <div class="column-12 title-bar">
+            <h1>Post Preview: {{ post.title }}</h1>
+            <a href="{{ path_for('posts.index') }}" class="button"><i class="fa fa-angle-right"></i> Back to Posts</a>
+        </div>
+        
+        <div class="post-main">
+            <h2>{{ post.title }}</h2>
+            <h3>By {{ post.author }} on {{ post.created_at|date('F d, Y') }}</h3>
+            <div class="actions">
+                <a href="{{ path_for('posts.edit', { 'id': post.id }) }}">Edit</a> | <a href="{{ path_for('posts.delete', { 'id': post.id }) }}">Delete</a>
+            </div>
+
+            <div class="body">
+                <img src="/assets/uploads/posts/{{ post.id }}/featured.jpg" draggable="false">
+
+                {{ post.body|raw }}
+
+                {% if files is not empty %}
+                    <div class="files">
+                        <p><strong>Attached Files:</strong></p>
+
+                        <ul>
+                            {% for file in files %}
+                                <li><a href="/assets/uploads/posts/{{ post.id }}/files/{{ file }}" download>{{ file|split('.')|first|capitalize|replace({ '-': ' ', '_': ' ' }) }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

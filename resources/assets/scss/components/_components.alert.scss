@@ -23,7 +23,9 @@
     border-left: solid 5px color(black);
     color: color(black);
     margin-bottom: calc((#{$baseline} - #{ms(6)}) + #{$baseline * 1.5});
-    position: relative;
+    position: absolute;
+    width:100%;
+    z-index:100;
 
     @if ($is-dark) {
         background: color(grey-darkest);

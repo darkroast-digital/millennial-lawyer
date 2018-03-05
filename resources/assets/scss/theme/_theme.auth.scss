@@ -1,0 +1,106 @@
+/*
+|--------------------------------------------------------------------------
+| #AUTH STYLES
+|--------------------------------------------------------------------------
+*/
+
+.auth {
+
+    // #LOGIN / FORGOT / RESET
+    // =========================================================================
+
+    .login, .forgot, .reset {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        min-height:100vh;
+
+        &__container {
+            background-color:#ffffff;
+            width:100%;
+            border:1px solid $primary;
+
+            @media screen and (max-width:48em) {
+                margin-top:2rem;
+                margin-bottom:2rem;
+                padding:0;
+            }
+
+            .logo {
+                background:url('/assets/img/hero-panel-bg.jpg') no-repeat;
+                background-size:cover;
+                margin:0;
+
+                &-wrapper {
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    padding:2rem;
+
+                    img {
+                        max-width:100%;
+                    }
+                }
+            }
+
+            .content {
+
+                &-wrapper {
+                    display:flex;
+                    flex-direction:column;
+                    justify-content:center;
+                    height:100%;
+                    padding:1rem 2rem;
+
+                    h1 {
+                        color:$secondary;
+                        font-size:2.5rem;
+                    }
+
+                    form {
+
+                        .field {
+
+                            label {
+                                color:$secondary;
+                            }
+
+                            input {
+                                padding-left:.4rem;
+                            }
+                        }
+
+                        .password-container {
+                            position:relative;
+
+                            input {
+                                padding-right:3rem;
+                            }
+
+                            i {
+                                position:absolute;
+                                right:1rem;
+                                bottom:.1rem;
+                            }
+                        }
+
+                        .button {
+                            margin-bottom:1rem;
+                        }
+                    }
+
+                    a {
+                        font-size:.9rem;
+                        text-decoration:underline;
+                        transition:all .2s ease;
+
+                        &:hover {
+                            color:lighten($primary, 20%)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

@@ -170,17 +170,17 @@
                 <form action="{{ path_for('home') }}" method="post" class="form contact-form">
                     <div class="field">
                         <label for="name"><i class="fa fa-user"></i></label>
-                        <input type="text" name="name" required>
+                        <input type="text" name="name" placeholder="John Smith" required>
                     </div>
 
                     <div class="field">
                         <label for="email"><i class="fa fa-envelope"></i></label>
-                        <input type="email" name="email" required>
+                        <input type="email" name="email" placeholder="johnsmith@email.com" required>
                     </div>
 
                     <div class="field">
                         <label for="message"><i class="fa fa-pencil"></i></label>
-                        <textarea name="message" required></textarea>
+                        <textarea name="message" placeholder="Dear Jordan Jones..." required></textarea>
                     </div>
 
                     <button class="button submit"><i class="fa fa-angle-right"></i> Send Message</button>

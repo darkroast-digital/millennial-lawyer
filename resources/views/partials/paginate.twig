@@ -1,5 +1,19 @@
 <div class="paginate__container">
-    {% if tickets.nextPageUrl or tickets.previousPageUrl%}
-    <div><a href="{{ tickets.previousPageUrl }}">Prev Page</a> / <a href="{{ tickets.nextPageUrl }}">Next Page</a></div>
+    {% if context == 'posts' %}
+        {% if posts.hasPages %}
+            {% if posts.onFirstPage %}
+                
+            {% else %}
+                <a href="{{ posts.previousPageUrl }}">Prev Page</a>
+                {% if posts.hasMorePages %}
+                    /
+                {% endif %}
+            {% endif %}
+            {% if posts.hasMorePages %}
+                    <a href="{{ posts.nextPageUrl }}">Next Page</a>
+            {% else %}
+
+            {% endif %}
+        {% endif %}
     {% endif %}
 </div>

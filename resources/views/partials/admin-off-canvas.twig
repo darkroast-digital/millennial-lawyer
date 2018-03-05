@@ -1,0 +1,9 @@
+<div class="admin-off-canvas">
+    <ul>
+        <li><a href="{{ path_for('posts.index') }}">Admin Home</a></li>
+        <li><a href="{{ path_for('posts.create') }}">Create Post</a></li>
+        <li><a href="{{ path_for('users.view', { 'id': auth.user.id }) }}">View Profile</a></li>
+        <li><a href="{{ path_for('users.edit', { 'id': auth.user.id }) }}">Edit Profile</a></li>
+        <li><a href="{{ path_for('logout') }}">Logout</a></li>
+    </ul>
+</div>

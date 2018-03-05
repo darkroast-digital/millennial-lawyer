@@ -1,0 +1,67 @@
+{% extends 'layouts/app.twig' %}
+{% block pageclass %}post{% endblock %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block keywords %}{{ post.keywords }}{% endblock %}
+{% block description %}{{ post.ogdesc }}{% endblock %}
+{% block ogtitle %}{{ post.ogtitle }}{% endblock %}
+{% block ogdesc %}{{ post.ogdesc }}{% endblock %}
+
+{% block content %}
+
+<header class="header" id="home">
+    <div class="header__container container">
+        <div class="logo-wrapper">
+            <a href="{{ path_for('home') }}">
+                <img src="/assets/img/ml-header.jpg" alt="ML" draggable="false">
+                <img src="/assets/img/millennial-lawyer-header.png" alt="Millennial Lawyer" draggable="false">
+            </a>
+        </div>
+
+        <div class="socials-wrapper">
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-vimeo"></i></a>
+            <a href="#"><i class="fa fa-facebook-square"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+        </div>
+    </div>
+</header>
+
+<section class="post-content">
+    <div class="post-content__container container">
+        <div class="column-12">
+            <button type="button" class="go-back"><i class="fa fa-arrow-left"></i> Go back</button>
+        </div>
+
+        <div class="post-main">
+            <h1>{{ post.title }}</h1>
+            <h2>By {{ post.author }} on {{ post.created_at|date('F d, Y') }}</h2>
+
+            <div class="body">
+                <img src="/assets/uploads/posts/{{ post.id }}/featured.jpg" draggable="false">
+
+                {{ markdown(post.body)|raw }}
+
+                {% if files is not empty %}
+                    <div class="files">
+                        <p><strong>Attached Files:</strong></p>
+
+                        <ul>
+                            {% for file in files %}
+                                <li><a href="/assets/uploads/posts/{{ post.id }}/files/{{ file }}" download>{{ file|split('.')|first|capitalize|replace({ '-': ' ', '_': ' ' }) }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer__container container">
+        <p>&copy; COPYRIGHT 2018</p>
+    </div>
+</footer>
+
+{% endblock %}

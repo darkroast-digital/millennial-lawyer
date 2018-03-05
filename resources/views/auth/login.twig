@@ -1,0 +1,47 @@
+{% extends 'layouts/app.twig' %}
+{% block pageclass %}auth{% endblock %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<section class="login">
+    <div class="login__container container">
+
+        <div class="column-5 logo">
+            <div class="logo-wrapper">
+                <img src="/assets/img/millennial-lawyer-hero.png" alt="Millennial Lawyer - ML - By Jordan Jones" draggable="false">
+            </div>
+        </div>
+
+        <div class="column-7 content">
+            <div class="content-wrapper">
+                <h1>Login</h1>
+                <form action="{{ path_for('login') }}" method="post" class="login-form">
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <div class="password-container">
+                            <input type="password" name="password" required>
+                            <i class="view-password">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <g class="nc-icon-wrapper" fill="#A9BFD6">
+                                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path>
+                                </g>
+                            </svg>
+                            </i>
+                        </div>
+                    </div>
+
+                    <button class="button submit"><i class="fa fa-angle-right"></i> Login</button>
+                </form>
+                <a href="{{ path_for('forgot') }}">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

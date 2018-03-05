@@ -629,6 +629,87 @@ body {
 
 
 
+// #POSTS
+// =========================================================================
+
+.post-content {
+
+    &__container {
+        color:$secondary;
+        min-height:90vh;
+        padding:1.5rem;
+        background-color:#ffffff;
+        margin:1rem auto;
+        border-radius:.5rem;
+
+        @media screen and (max-width:48em) {
+            max-width:90%;
+        }
+
+        button {
+            background-color:#ffffff;
+            border-color:#ffffff;
+            color:$primary;
+            padding-left:0;
+            text-transform:uppercase;
+            font-weight:900;
+            transition:all .2s ease;
+
+            &:hover {
+                color:lighten($primary, 20%);
+            }
+
+            i { 
+                margin-right:.25rem;
+            }
+        }
+
+        .post-main {
+
+            h1, h2 {
+                color:$secondary;
+                text-align:center;
+            }
+
+            h1 {
+                margin-bottom:0;
+                font-size:1.75rem;
+
+                @media screen and (max-width:48em) {
+                    margin-top:1rem;
+                }
+            }
+
+            h2 {
+                font-size:1rem;
+            }
+
+            img {
+                float:left;
+                max-width:300px;
+                margin:0 1rem 1rem 0;
+
+                @media screen and (max-width:48em) {
+                    width:100%;
+                    max-width:100%;
+                    margin-right:0;
+                }
+            }
+
+            .files {
+                margin-top:3rem;
+
+                ul {
+                    margin-left:1rem;
+                }
+            }
+        }
+    }
+}
+
+
+
+
 // #FOOTER
 // =========================================================================
 

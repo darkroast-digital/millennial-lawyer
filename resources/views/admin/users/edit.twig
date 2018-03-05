@@ -1,0 +1,67 @@
+{% extends 'layouts/app.twig' %}
+{% block pageclass %}admin{% endblock %}
+{% block title %}Edit Account{% endblock %}
+
+{% block content %}
+
+{% include 'admin/header.twig' %}
+
+<section class="users-edit">
+    <div class="users-edit__container container">
+        <div class="title-bar">
+            <h1>Edit User: <strong>{{ user.name }}</strong></h1>
+        </div>
+
+        <form action="{{ path_for('users.edit', { 'id': user.id }) }}" method="post" class="edit-user-form" enctype="multipart/form-data">
+            <div class="container--full">
+                <div class="column-3 avatar">
+                    <label class="featured-image image-upload">Avatar<input type="file" name="avatar"> {% if avatar is null %}<span>Set Avatar</span>{% endif %}<img src="{% if avatar is not null %}/assets/uploads/avatars/{{ user.id }}/avatar.jpg{% endif %}" draggable="false" class="image-preview" {% if avatar is not null %}style="display: block"{% endif %}></label>
+                </div>
+
+                <div class="column-9 content">
+                    <div class="detail">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" value="{{ user.name }}" placeholder="John Smith" required>
+                    </div>
+
+                    <div class="detail">
+                        <label for="password">New Password</label>
+                        <div class="password-container">
+                            <input type="password" name="password" placeholder="Password123!">
+                            <i class="view-password">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <g class="nc-icon-wrapper" fill="#A9BFD6">
+                                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path>
+                                </g>
+                            </svg>
+                            </i>
+                        </div>
+                    </div>
+
+                    <div class="detail">
+                        <label for="password">Confirm New Password</label>
+                        <div class="password-container">
+                            <input type="password" name="passwordConfirm" placeholder="Password123!">
+                            <i class="view-password">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <g class="nc-icon-wrapper" fill="#A9BFD6">
+                                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path>
+                                </g>
+                            </svg>
+                            </i>
+                        </div>
+                    </div>
+
+                    <div class="detail">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" value="{{ user.email }}" placeholder="johnsmith@email.com" required>
+                    </div>
+
+                    <button class="button submit"><i class="fa fa-angle-right"></i> Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

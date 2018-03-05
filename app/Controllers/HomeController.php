@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\Controller;
+use App\Models\Post;
 use PHPMailer\PHPMailer\PHPMailer;
 
 
@@ -10,36 +11,50 @@ class HomeController extends Controller
 {
     public function index($request, $response, $args)
     {
+        $posts = Post::orderBy('created_at', 'desc');
+        return $this->view->render($response, 'home.twig', compact('posts'));
+    }
 
-        return $this->view->render($response, 'home.twig');
+    public function viewPost($request, $response, $args)
+    {
+        $post = Post::where('slug', $args['slug'])->first();
+
+        $files = [];
+
+        if (count(glob(__DIR__ . '/../../assets/uploads/posts/' . $post->id . '/files/*'))) {
+            $scan = scandir(__DIR__ . '/../../assets/uploads/posts/' . $post->id . '/files');
+            unset($scan[0]);
+            unset($scan[1]);
+
+            foreach ($scan as $file) {
+                array_push($files, $file);
+            }
+        }
+
+        return $this->view->render($response, 'post.twig', compact('post', 'files'));
     }
 
     public function post($request, $response, $args)
     {
         $mail = new PHPMailer;
 
-        $type = $_POST['type'];
-        $name = $_POST['name'];
-        $company = $_POST['company'];
-        $phone = $_POST['phone'];
-        $email = $_POST['email'];
-        $details = $_POST['details'];
+        $params = $_POST;
+        $name = $params['name'];
+        $email = $params['email'];
+        $message = $params['message'];
         
-        $subject = 'New ' . $type . ' from CFK Website';
+        $subject = 'New message from Millennial Lawyer Website';
 
         $mail->setFrom($email, $name);
-        $mail->addAddress('info@cfkcanada.org', 'Computers For Kids');
-        $mail->addReplyTo('info@cfkcanada.org', 'Computers For Kids');
-        $mail->ReturnPath='info@cfkcanada.org';
+        $mail->addAddress('kim@darkroast.co', 'Millennial Lawyer Website');
+        $mail->addReplyTo('kim@darkroast.co', 'Millennial Lawyer Website');
+        $mail->ReturnPath='kim@darkroast.co';
 
         $mail->isHTML(true);
 
-        $body = "<p>New " . $type . " from Computers for Kids website:</p>" .
-                "<p>Name: " . $name . "<br/>" .
-                "Company: " . $company . "<br/>" .
-                "Phone: " . $phone . "<br/>" .
+        $body = "<p>Name: " . $name . "<br/>" .
                 "Email: " . $email . "<br/>" .
-                "Details: " . $details . "<br/>";
+                "Message: " . $message;
 
         $mail->Subject = $subject;
         $mail->Body    = $body;

@@ -1,0 +1,108 @@
+{% extends 'layouts/app.twig' %}
+{% block pageclass %}admin{% endblock %}
+{% block title %}Edit Post{% endblock %}
+
+{% block content %}
+
+{% include 'admin/header.twig' %}
+
+<section class="posts-edit">
+    <div class="posts-edit__container container">
+        <div class="column-12 title-bar">
+            <h1>Edit Post</h1>
+            <a href="{{ path_for('posts.view', { 'slug': post.slug }) }}" class="button"><i class="fa fa-angle-right"></i> View Post</a>
+        </div>
+
+        <form action="{{ path_for('posts.edit', { 'id': post.id }) }}" method="post" class="edit-post-form" enctype="multipart/form-data">
+            <div class="container--full">
+
+                <div class="column-9 main">
+                    <div class="body">
+                        <div class="field">
+                            <label for="title">Post Title</label>
+                            <input type="text" name="title" placeholder="7 Things Doctors Don't Want You To Know" id="title" value="{{ post.title }}" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="body">Post Body</label>
+                            <textarea name="body" id="mde" placeholder="Type Content Here">{{ post.body }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="seo">
+                        <h5>Optional SEO Values</h5>
+
+                        <div class="field">
+                            <label for="ogtitle">Open Graph Title:</label>
+                            <input type="text" name="ogtitle" id="ogtitle" placeholder="7 Things Doctors Don't Want You To Know" value="{{ post.ogtitle }}">
+                        </div>
+
+                        <div class="field">
+                            <label for="ogdesc">Post Description:</label>
+                            <textarea name="ogdesc" placeholder="Up to 160 characters" maxlength="160">{{ post.ogdesc }}</textarea>
+                        </div>
+
+                        <div class="field">
+                            <label for="keywords">Keywords:</label>
+                            <textarea name="keywords" placeholder="Separate individual search terms by comma">{{ post.keywords }}</textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column-3 details">
+                    <div class="post-attributes">
+                        <div class="field">
+                            <p class="visible-label">Save as Draft:</p>
+                            <label class="toggle"><input type="checkbox" name="draft" {% if post.draft == 1 %}checked{% endif %}><span class="toggle-button"></span></label>
+                        </div>
+
+                        <div class="field">
+                            <label for="author">Author:</label>
+                            <input type="text" name="author" value="Admin" value="{{ post.author }}" placeholder="John Smith" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="slug">Slug:</label>
+                            <input type="text" name="slug" id="slug" placeholder="7-things-doctors" value="{{ post.slug }}">
+                        </div>
+
+                        <div class="field date-field">
+                            <label for="created">Created:</label>
+                            <p>{{ post.created_at|date('d/m/Y H:i:s') }}</p>
+                        </div>
+
+                        <div class="field date-field">
+                            <label for="created">Updated:</label>
+                            <p>{{ 'now'|date('d/m/Y H:i:s') }}</p>
+                        </div>
+
+                        <button class="button submit">Update Post</button>
+                    </div>
+
+                    <div class="image">
+                        <label class="featured-image image-upload">Change Featured Image<input type="file" name="featured">{% if post.featured is null %}<span>Set Featured Image</span>{% endif %}<img src="{% if post.featured is not null %}/assets/uploads/posts/{{ post.featured }}/featured.jpg{% endif %}" draggable="false" class="image-preview" {% if post.featured is not null %}style="display:block;"{% endif %}></label>
+                    </div>
+
+                    <div class="files-field">
+                        <label>Add Files</label>
+                        <label for="files" class="files">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <g class="nc-icon-wrapper" fill="#acc1d6">
+                                        <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"></path>
+                                    </g>
+                                </svg>
+                                Choose Your Files
+                            </span>
+                            <input type="file" name="files[]" id="files" multiple>
+                        </label>
+                        <ul class="file-preview"></ul>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

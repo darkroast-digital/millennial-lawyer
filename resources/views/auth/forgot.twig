@@ -1,0 +1,33 @@
+{% extends 'layouts/app.twig' %}
+{% block pageclass %}auth{% endblock %}
+{% block title %}Forgot Password{% endblock %}
+
+{% block content %}
+
+<section class="forgot">
+    <div class="forgot__container container">
+
+        <div class="column-5 logo">
+            <div class="logo-wrapper">
+                <img src="/assets/img/millennial-lawyer-hero.png" alt="Millennial Lawyer - ML - By Jordan Jones" draggable="false">
+            </div>
+        </div>
+
+        <div class="column-7 content">
+            <div class="content-wrapper">
+                <h1>Recover Password</h1>
+                <form action="{{ path_for('forgot') }}" method="post" class="forgot-form">
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+
+                    <button class="button submit"><i class="fa fa-angle-right"></i> Submit</button>
+                </form>
+                <a href="{{ path_for('login') }}">Login</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
