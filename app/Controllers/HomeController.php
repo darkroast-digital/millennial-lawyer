@@ -43,7 +43,7 @@ class HomeController extends Controller
         $email = $params['email'];
         $message = $params['message'];
         
-        $subject = 'New message from Millennial Lawyer Website';
+        $subject = 'New message from ' . $name . ' via your Millennial Lawyer Website';
 
         $mail->setFrom($email, $name);
         $mail->addAddress('kim@darkroast.co', 'Millennial Lawyer Website');

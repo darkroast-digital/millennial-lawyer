@@ -129,6 +129,22 @@ body {
                 &:last-of-type {
                     margin-right:0;
                 }
+
+                &.button {
+                    background-color:#ffffff;
+                    border-color:#ffffff;
+                    color:#5d5c62;
+                    border-radius:4px;
+                    padding:.2rem .4rem;
+                    font-size:.9rem;
+                    transition:all .2s ease;
+
+                    &:hover {
+                        background-color:$primary;
+                        border-color:$primary;
+                        color:#ffffff;
+                    }
+                }
             }
         }
     }
@@ -156,17 +172,18 @@ body {
 
     img.jordan {
         position:absolute;
-        left:51%;
+        left:47%;
         bottom:0;
         max-width:33%;
 
         @media screen and (max-width:90em) {
             max-width:44%;
-            left:52%;
+            left:47%;
         }
 
         @media screen and (max-width:32em) {
             max-width:50%;
+            left:50%;
         }
     }
 
@@ -217,6 +234,27 @@ body {
 
     &__container {
         padding:2rem 0;
+
+        .tagline {
+
+            p {
+                font-family:$font-three;
+                text-align:center;
+                font-size:4rem;
+
+                @media screen and (max-width:64em) {
+                    font-size:2.75rem;
+                }
+
+                @media screen and (max-width:48em) {
+                    font-size:2.25rem;
+                }
+
+                @media screen and (max-width:32em) {
+                    font-size:2rem;
+                }
+            }
+        }
 
         .column-4 {
             background-color:#ffffff;
@@ -560,6 +598,22 @@ body {
                         width:10%;
                         height:2px;
                         background:#ffffff;
+                    }
+                }
+
+                &.button {
+                    background-color:#ffffff;
+                    border-color:#ffffff;
+                    color:#5d5c62;
+                    border-radius:4px;
+                    padding:.2rem .4rem;
+                    transition:all .2s ease;
+                    margin-bottom:1rem;
+
+                    &:hover {
+                        background-color:$primary;
+                        border-color:$primary;
+                        color:#ffffff;
                     }
                 }
             }
