@@ -104,11 +104,13 @@ if (adminOffCanvasTrigger) {
 
 var modalTrigger = document.querySelector('.modal__trigger');
 var modal = document.querySelector('.modal');
+var body = document.querySelector('body');
 
 if (modalTrigger) {
     modalTrigger.addEventListener('click', function () {
         modal.classList.add('is--open');
         overlay.classList.add('is--active');
+        body.style.overflow = "hidden";
     });
 }
 
@@ -148,6 +150,7 @@ if (modal) {
     $(document).keyup(function(e) {
         if (e.keyCode === 27) {
             modal.classList.remove('is--open');
+            body.style.overflowY = "scroll";
         }
     });
 
@@ -181,6 +184,7 @@ if (overlay) {
 if (overlay) {
     overlay.addEventListener('click', function () {
         modal.classList.remove('is--open');
+        body.style.overflowY = "scroll";
     });
 }
 

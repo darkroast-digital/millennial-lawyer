@@ -11,6 +11,9 @@
     background: color(white);
     padding: 1rem;
     margin: 1rem 0;
+    z-index:100000;
+    overflow:scroll;
+    position:relative;
 
     @if ($has-radius) {
         border-radius: radius(small);

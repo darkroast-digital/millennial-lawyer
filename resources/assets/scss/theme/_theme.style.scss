@@ -111,7 +111,7 @@ body {
 
         .socials-wrapper {
             position:relative;
-            z-index:100;
+            z-index:70;
 
             @media screen and (max-width:48em) {
                 display:none;
@@ -436,7 +436,7 @@ body {
                         }
                     }
 
-                    a {
+                    button {
                         margin:2rem 0;
                         margin-left:-2rem;
                         padding:.5rem 1.5rem .5rem 2rem;
