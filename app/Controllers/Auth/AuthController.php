@@ -19,7 +19,7 @@ class AuthController extends Controller
     public function postLogin($request, $response, $args)
     {
         $user = User::where('email', $request->getParam('email'))->first();
-
+        // dd(getenv('DB_USERNAME'));
         if (!$user) {
             $this->flash->addMessage('error', 'Sorry, that is not a recognized user email.');
             return $response->withRedirect($this->router->pathFor('login'));

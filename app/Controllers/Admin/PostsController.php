@@ -2,8 +2,9 @@
 
 namespace App\Controllers\Admin;
 
-use App\Controllers\Controller;
 use App\Models\Post;
+use App\Controllers\Controller;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class PostsController extends Controller
 {
@@ -88,13 +89,22 @@ class PostsController extends Controller
         $id = $post->id;
         $basePath = __DIR__ . '/../../../assets/uploads/posts/' . $id;
 
-        if (isset($_FILES['featured'])) {
-
+        if (isset($image)) {
             if (!file_exists($basePath)) {
                 mkdir($basePath);
             }
 
             move_uploaded_file($image['tmp_name'], $basePath . '/featured.jpg');
+            
+            if (getimagesize($basePath . '/featured.jpg')[0] > 1920) {
+                Image::configure();
+                $img = Image::make($basePath . '/featured.jpg');
+                $img->resize(1920, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $img->save($basePath . '/featured.jpg');
+            }
+
             $post->featured = $id;
             $post->save();
 
@@ -160,6 +170,17 @@ class PostsController extends Controller
 
         move_uploaded_file($image['tmp_name'], __DIR__ . '/../../../assets/uploads/posts/' . $id . '/featured.jpg');
 
+        $basePath = __DIR__ . '/../../../assets/uploads/posts/' . $id;
+        
+        if (getimagesize($basePath . '/featured.jpg')[0] > 1920) {
+            Image::configure();
+            $img = Image::make($basePath . '/featured.jpg');
+            $img->resize(1920, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save($basePath . '/featured.jpg');
+        }
+
         $this->flash->addMessage('info', 'Post Updated!');
         return $response->withRedirect($this->router->pathFor('posts.view', ['slug' => $post->slug]));
     }
@@ -180,4 +201,3 @@ class PostsController extends Controller
         return $response->withRedirect($this->router->pathFor('posts.index'));
     }
 }
-
