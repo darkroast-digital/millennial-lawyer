@@ -33,7 +33,7 @@
                             </div>
                         </td>
                         <td><a href="{{ path_for('posts.view', { 'slug': post.slug }) }}">{{ post.title }}</a></td>
-                        <td>{{ post.body|slice(0, 100) }}</td>
+                        <td>{{ post.body|slice(0, 100) }}...</td>
                         <td>{{ post.author }}</td>
                         <td>{% if post.draft == 0 %}Posted{% else %}Drafted{% endif %}</td>
                         <td><a href="{{ path_for('posts.edit', { 'id': post.id }) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a href="{{ path_for('posts.delete', { 'id': post.id }) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>

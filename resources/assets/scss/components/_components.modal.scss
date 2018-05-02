@@ -18,6 +18,7 @@
     overflow:scroll;
     background:#ffffff;
     padding:2rem;
+    border:solid 4px $primary;
 
     @media screen and (max-width:64em) {
         width:80vw;
@@ -58,5 +59,42 @@
         > * {
             pointer-events: all;
         }
+    }
+}
+
+.subscribe-modal {
+    max-height: 70vh;
+    height:auto;
+    top:50%;
+    transform:translateY(-50%);
+
+    h2 {
+        text-align:center;
+    }
+
+    .indicates-required, label {
+        color:$secondary;
+    }
+
+    .clear {
+        text-align:center;
+
+        .button {
+            background-color:$primary!important;
+            border:solid 1px $primary !important;
+            transition:all .2s ease!important;
+
+            &:hover {
+                background:none!important;
+                color:$primary!important;
+                border:solid 1px $primary!important;
+            }
+        }
+    }
+
+    .response {
+        width:100%!important;
+        text-align:center!important;
+        color:$secondary!important;
     }
 }

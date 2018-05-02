@@ -11,8 +11,9 @@
 
     <!-- Styles -->
 
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/app.css">
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
 
     <!-- Mobile Theme Colour -->
 
@@ -52,11 +53,26 @@
             <div class="content">
                 {% include 'partials/overlay.twig' %}
                 {% include 'partials/modal.twig' %}
+                {% include 'partials/subscribe-modal.twig' %}
                 {% block content %}{% endblock %}
             </div>
     </div>
 
     <script src="/assets/js/app.js"></script>
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+    <script type='text/javascript'>
+        (function ($) {
+            window.fnames = new Array();
+            window.ftypes = new Array();
+            fnames[0] = 'EMAIL';
+            ftypes[0] = 'email';
+            fnames[1] = 'FNAME';
+            ftypes[1] = 'text';
+            fnames[2] = 'LNAME';
+            ftypes[2] = 'text';
+        }(jQuery));
+        var $mcj = jQuery.noConflict(true);
+    </script>
 
     {# You make me wanna be stupid when we talk about Plato and you ask 'green or red'... #}
 </body>

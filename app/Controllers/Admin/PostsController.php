@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Models\Post;
+use DrewM\MailChimp\MailChimp;
 use App\Controllers\Controller;
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -117,6 +118,40 @@ class PostsController extends Controller
                 move_uploaded_file($files['tmp_name'][$i], $filePath);
             }
         }
+
+        /**
+         * MAIL CHIMP API
+         */
+
+        $MailChimp = new MailChimp('36e3fdb9b4a159b114f8d7e8e36e72d4-us18');
+
+        // Create or Post new Campaign
+        $result = $MailChimp->post('campaigns', [
+            'type' => 'regular',
+            'recipients' => ['list_id' => '4d6d6effca'],
+            'settings' => [
+                'subject_line' => 'Jordan Jones has posted a new article: ' . $post->title,
+                'reply_to' => 'contact@millenniallawyer.com',
+                'from_name' => 'Jordan Jones',
+                'template_id' => 7086
+            ]
+        ]);
+
+        $mcResponse = $MailChimp->getLastResponse();
+        $mcResponseObject = json_decode($mcResponse['body']);
+
+        // Manage Campaign Content
+        $html = $this->view->fetch('mail/email_template.twig', compact('post'));
+        $result = $MailChimp->put('campaigns/' . $mcResponseObject->id . '/content', [
+            'template' => ['id' => 7086,
+                'sections' => ['body_content' => $html
+
+                    ]
+                ]
+            ]);
+
+        // Send Campaign
+        $result = $MailChimp->post('campaigns/' . $mcResponseObject->id . '/actions/send');
 
         $this->flash->addMessage('info', 'Post Created!');
 

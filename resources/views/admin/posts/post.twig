@@ -14,6 +14,10 @@
         </div>
         
         <div class="post-main">
+            <div class="image-wrapper">
+                <img src="/assets/uploads/posts/{{ post.id }}/featured.jpg" draggable="false">
+            </div>
+            
             <h2>{{ post.title }}</h2>
             <h3>By {{ post.author }} on {{ post.created_at|date('F d, Y') }}</h3>
             <div class="actions">
@@ -21,7 +25,6 @@
             </div>
 
             <div class="body">
-                <img src="/assets/uploads/posts/{{ post.id }}/featured.jpg" draggable="false">
 
                 {{ post.body|raw }}
 

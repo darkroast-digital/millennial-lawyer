@@ -1,10 +1,6 @@
 {% extends 'layouts/app.twig' %}
-{% block pageclass %}post{% endblock %}
-{% block title %}{{ post.title }}{% endblock %}
-{% block keywords %}{{ post.keywords }}{% endblock %}
-{% block description %}{{ post.ogdesc }}{% endblock %}
-{% block ogtitle %}{{ post.ogtitle }}{% endblock %}
-{% block ogdesc %}{{ post.ogdesc }}{% endblock %}
+{% block pageclass %}archive{% endblock %}
+{% block title %}All Posts{% endblock %}
 
 {% block content %}
 
@@ -41,37 +37,28 @@
     </div>
 </header>
 
-<section class="post-content">
-    <div class="post-content__container container">
-        <div class="column-12">
-            <button type="button" class="go-back"><i class="fa fa-arrow-left"></i> Go back</button>
-        </div>
+<section class="archive">
+    <div class="archive__container container">
 
-        <div class="post-main">
-            <div class="image-wrapper">
-                <img src="/assets/uploads/posts/{{ post.id }}/featured.jpg" draggable="false">
+    <h1>All <span>Posts</span></h1>
+
+        {% for post in posts %}
+            <div class="article container--full">
+                <div class="featured-wrapper column-3">
+                    <img src="/assets/uploads/posts/{{ post.id }}/featured.jpg" draggable="false">
+                </div>
+                <div class="content-wrapper column-9">
+                    <h4>
+                        <a href="{{ path_for('home.post', { 'slug': post.slug }) }}">{{ post.title }}</a>
+                    </h4>
+                    <p>{{ post.body|slice(0, 300) }}...</p>
+                    <p class="byline">By {{ post.author }} on {{ post.created_at|date('F d, Y') }}</p>
+                </div>
             </div>
+        {% endfor %}
 
-            <h1>{{ post.title }}</h1>
-            <h2>By {{ post.author }} on {{ post.created_at|date('F d, Y') }}</h2>
+        {% include 'partials/paginate.twig' with { 'context': 'posts' } %}
 
-            <div class="body">
-
-                {{ markdown(post.body)|raw }}
-
-                {% if files is not empty %}
-                    <div class="files">
-                        <p><strong>Attached Files:</strong></p>
-
-                        <ul>
-                            {% for file in files %}
-                                <li><a href="/assets/uploads/posts/{{ post.id }}/files/{{ file }}" download>{{ file|split('.')|first|capitalize|replace({ '-': ' ', '_': ' ' }) }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
     </div>
 </section>
 

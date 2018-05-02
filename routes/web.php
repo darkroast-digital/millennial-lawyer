@@ -16,8 +16,6 @@ use App\Controllers\HomeController;
 use App\Middleware\AuthMiddleware;
 use App\Middleware\OldInputMiddleware;
 
-
-
 // #HOME
 // =========================================================================
 
@@ -44,7 +42,7 @@ $app->post('/reset/{token}', PasswordController::class . ':postReset');
 // #POSTS
 // =========================================================================
 
-$app->group('/admin', function() {
+$app->group('/admin', function () {
     $this->get('', PostsController::class . ':index')->setName('posts.index');
     $this->get('/posts/create', PostsController::class . ':create')->setName('posts.create');
     $this->post('/posts/create', PostsController::class . ':store');
@@ -61,7 +59,7 @@ $app->group('/admin', function() {
 // #USERS
 // =========================================================================
 
-$app->group('/admin/user', function() {
+$app->group('/admin/user', function () {
     $this->get('/{id}', UsersController::class . ':view')->setName('users.view');
     $this->get('/edit/{id}', UsersController::class . ':edit')->setName('users.edit');
     $this->post('/edit/{id}', UsersController::class . ':update');
@@ -73,4 +71,5 @@ $app->group('/admin/user', function() {
 // #VIEW POSTS
 // =========================================================================
 
+$app->get('/archive', HomeController::class . ':archive')->setName("home.archive");
 $app->get('/{slug}', HomeController::class . ':viewPost')->setName("home.post");

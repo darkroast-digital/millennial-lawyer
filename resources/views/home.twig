@@ -18,7 +18,7 @@
                 <a href="#"><i class="fa fa-facebook-square"></i></a>
                 <a href="#"><i class="fa fa-linkedin"></i></a>
                 <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#" class="button">Subscribe</a>
+                <button class="button subscribe-modal__trigger">Subscribe</button>
             </div>
         </div>
     </header>
@@ -59,7 +59,19 @@
                         <h2>Popular <br/>
                             <span>From Blog</span></h2>
 
-                        <div class="article container--full">
+                        {% for post in popular %}
+                            <div class="article container--full">
+                                <div class="featured-wrapper column-3">
+                                    <img src="/assets/uploads/posts/{{ post.id }}/featured.jpg" draggable="false">
+                                </div>
+                                <div class="content-wrapper column-9">
+                                    <h4><a href="{{ path_for('home.post', { 'slug': post.slug }) }}">{{ post.title }}</a></h4>
+                                    <p>{{ post.body|slice(0, 100) }}...</p>
+                                    <p class="byline">By {{ post.author }} on {{ post.created_at|date('F d, Y') }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {# <div class="article container--full">
                             <div class="featured-wrapper column-3">
                                 <img src="" alt="" draggable="false">
                             </div>
@@ -90,7 +102,7 @@
                                 <p>Et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</p>
                                 <p class="byline">By Admin on Oct 12, 2015</p>
                             </div>
-                        </div>
+                        </div> #}
                     </div>
                 </div>
                 
@@ -102,7 +114,7 @@
                         <div class="content-wrapper">
                             <h4>Millennial at Law</h4>
                             <p><em>This is my personal blog. It’s focused on “growth” for millennial professionals. My philosophy is: if we’re not growing, we’re regressing.</em></p>
-                            <button class="button modal__trigger"><i class="fa fa-angle-right"></i> Learn more</button>
+                            <button class="button about-modal__trigger"><i class="fa fa-angle-right"></i> Learn more</button>
                             <img src="/assets/img/jordan-about.png" alt="Jordan Jones" draggable="false">
                         </div>
                     </div>
@@ -113,7 +125,22 @@
                 <div class="blog__container container--full">
                     <h2>Latest <span>From Blog</span></h2>
 
-                    <div class="article container--full">
+                    {% for post in recent %}
+                        <div class="article container--full">
+                            <div class="featured-wrapper column-3">
+                                <img src="/assets/uploads/posts/{{ post.id }}/featured.jpg" draggable="false">
+                            </div>
+                            <div class="content-wrapper column-9">
+                                <h4>
+                                    <a href="{{ path_for('home.post', { 'slug': post.slug }) }}">{{ post.title }}</a>
+                                </h4>
+                                <p>{{ post.body|slice(0, 300) }}...</p>
+                                <p class="byline">By {{ post.author }} on {{ post.created_at|date('F d, Y') }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                    {# <div class="article container--full">
                         <div class="featured-wrapper column-3">
                             <img src="" alt="" draggable="false">
                         </div>
@@ -147,7 +174,9 @@
                             <p class="byline">By Admin on Oct 12, 2015</p>
                             <p class="links"><a href="#" class="comments">2 <i class="fa fa-comment"></i></a> <a href="#" class="likes">5 <i class="fa fa-heart"></i></a> | <a href="#" class="share"><i class="fa fa-share-alt"></i></a></p>
                         </div>
-                    </div>
+                    </div> #}
+
+                    <a href="{{ path_for('home.archive') }}" class="button see-more"><i class="fa fa-angle-right"></i> See More</a>
                 </div>
             </div>
         </div>
@@ -158,7 +187,7 @@
 
             <div class="panel column-5">
                 <img src="/assets/img/jordan-jones.png" alt="Jordan Jones" draggable="false">
-                <a href="#" class="button">Subscribe</a>
+                <button class="button subscribe-modal__trigger">Subscribe</button>
                 <a href="mailto:contact@millenniallawyer.com" class="email">contact@millenniallawyer.com</a>
                 <div class="socials-wrapper">
                     <a href="#"><i class="fa fa-twitter"></i></a>
